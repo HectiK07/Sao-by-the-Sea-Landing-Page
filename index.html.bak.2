@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Optimization -->
+    <title>SAO BY THE SEA | Luxury Beachfront Resort, Bar & Events | Gorai Beach, Mumbai</title>
+    <meta name="description" content="Escape the ordinary at SAO BY THE SEA on Gorai Beach, Mumbai. A premium coastal resort, beachfront bar, fine dining restaurant, and corporate event venue inspired by the world's finest boutique resorts. Dine, Stay, Celebrate.">
+    <meta name="keywords" content="Sao by the sea, beachfront restaurant mumbai, luxury resort gorai beach, beach club mumbai, corporate offsite venue mumbai, destination wedding mumbai, pickleball gorai, rc racing mumbai">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="logos/sao_logo_circle.png" type="image/png">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- --- FULLSCREEN MOBILE MENU --- -->
+    <div class="fullscreen-nav" id="fullscreenNav" aria-hidden="true">
+        <ul class="fs-menu">
+            <li class="fs-item"><a href="#hero" class="fs-link" onclick="toggleMenu()">Home</a></li>
+            <li class="fs-item"><a href="#cuisine" class="fs-link" onclick="toggleMenu()">Dine</a></li>
+            <li class="fs-item"><a href="#resort" class="fs-link" onclick="toggleMenu()">Stay</a></li>
+            <li class="fs-item"><a href="#events" class="fs-link" onclick="toggleMenu()">Celebrate</a></li>
+            <li class="fs-item"><a href="#experiences" class="fs-link" onclick="toggleMenu()">Experiences</a></li>
+            <li class="fs-item"><a href="#gallery" class="fs-link" onclick="toggleMenu()">Gallery</a></li>
+            <li class="fs-item"><a href="#story" class="fs-link" onclick="toggleMenu()">About</a></li>
+            <li class="fs-item"><a href="#booking" class="fs-link" onclick="toggleMenu()">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- --- PREMIUM NAVIGATION HEADER --- -->
+    <header class="header" id="header">
+        <div class="container nav-container">
+            <!-- Left: Horizontal Capsule Logo -->
+            <a href="#hero" class="nav-logo" id="navLogo">
+                <img src="logos/Logo.png" alt="SAO BY THE SEA Logo">
+            </a>
+
+            <!-- Center: Editorial Links (Desktop Only) -->
+            <ul class="nav-menu">
+                <li><a href="#hero" class="nav-link">Home</a></li>
+                <li><a href="#cuisine" class="nav-link">Dine</a></li>
+                <li><a href="#resort" class="nav-link">Stay</a></li>
+                <li><a href="#events" class="nav-link">Celebrate</a></li>
+                <li><a href="#experiences" class="nav-link">Experiences</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#story" class="nav-link">About</a></li>
+                <li><a href="#booking" class="nav-link">Contact</a></li>
+            </ul>
+
+            <!-- Right: Action Button + Hamburger Toggle -->
+            <div class="nav-actions">
+                <a href="#booking" class="btn btn-primary nav-btn" id="bookTableCTA">BOOK A TABLE</a>
+                <button type="button" class="hamburger" id="menuToggle" aria-label="Toggle Navigation Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        <!-- --- HERO SECTION --- -->
+        <section class="hero" id="hero">
+            <!-- Premium Static Background Sunset Image -->
+            <div class="hero-image-wrapper">
+                <img src="Images/Hero Image (First Fold).webp" alt="SAO by the Sea beachfront dining lounge at sunset" class="hero-bg-image">
+            </div>
+            
+            <div class="hero-overlay"></div>
+            
+            <!-- Left Rotate Sidebar scroll indicator -->
+            <div class="left-scroll-bar">
+                <span>SCROLL TO EXPLORE</span>
+                <div class="line"></div>
+            </div>
+            
+            <div class="container">
+                <div class="hero-content">
+                    <span class="hero-tagline reveal reveal-up">Escape The Ordinary</span>
+                    <h1 class="hero-title reveal reveal-up">
+                        SAO <br>
+                        <span class="sub-title">BY THE SEA</span>
+                    </h1>
+                    <p class="hero-subtext reveal reveal-up">
+                        Mumbai’s ultimate beachfront experience.<br>
+                        Dine. Stay. Celebrate.
+                    </p>
+                    <div class="hero-btns reveal reveal-up">
+                        <a href="#booking" class="btn btn-primary">BOOK A TABLE</a>
+                        <a href="#resort" class="btn btn-secondary">EXPLORE RESORT</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Centered Scroll Down Chevron -->
+            <a href="#story" class="hero-scroll-down" aria-label="Scroll down to Our Story">
+                <svg viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </a>
+        </section>
+
+        <!-- --- STORY SECTION --- -->
+        <section class="story" id="story">
+            <div class="story-grid">
+                <!-- Left: Editorial Typography -->
+                <div class="story-left reveal reveal-left">
+                    <p class="section-sub">OUR STORY</p>
+                    <h2>Where the sea <br>meets <span class="serif-italic">celebration.</span></h2>
+                    <div class="story-text">
+                        <p class="story-para">
+                            Nestled on the serene shores of Gorai, <br>
+                            Sao by the Sea blends coastal dining, <br>
+                            luxury stays, unforgettable sunsets, <br>
+                            and experiences crafted for <br>
+                            every occasion.
+                        </p>
+                    </div>
+                    <a href="#booking" class="btn btn-outline">KNOW MORE</a>
+                </div>
+                
+                <!-- Right: Large Lifestyle Image (Clean Editorial Split) -->
+                <div class="story-right reveal reveal-right">
+                    <img src="Images/Hero Image (Second Fold).webp" alt="SAO by the Sea beachfront dining lounge at sunset" class="story-bg-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- --- EXPERIENCE SECTION --- -->
+        <section class="experiences" id="experiences">
+            <div class="container">
+                <div class="experiences-header reveal reveal-up">
+                    <p class="section-sub">Unforgettable Moments</p>
+                    <h2>Four ways to <br><span class="serif-italic">escape.</span></h2>
+                    <p class="lead">Whether you are checking in for a coastal weekend, raising a toast at sunset, or racing on the sand, SAO offers a curated escape for every mood.</p>
+                </div>
+                
+                <div class="experiences-grid stagger-parent">
+                    <!-- Card 1: DINE -->
+                    <a href="#cuisine" class="experience-card reveal reveal-zoom">
+                        <img src="https://images.unsplash.com/photo-1534080564583-6be75777b70a?q=80&w=600" alt="Fresh seafood lobster served on table by the beach" class="experience-card-bg">
+                        <div class="experience-card-overlay"></div>
+                        <div class="experience-card-content">
+                            <div class="experience-icon" aria-hidden="true">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                </svg>
+                            </div>
+                            <h3>DINE</h3>
+                            <p>Fresh coastal seafood, artisan mixology, and tables on the sand under sunset skies.</p>
+                            <span class="experience-arrow">→</span>
+                        </div>
+                    </a>
+
+                    <!-- Card 2: STAY -->
+                    <a href="#resort" class="experience-card reveal reveal-zoom">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=600" alt="Boutique beach villa and swimming pool resort view" class="experience-card-bg">
+                        <div class="experience-card-overlay"></div>
+                        <div class="experience-card-content">
+                            <div class="experience-icon" aria-hidden="true">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                            </div>
+                            <h3>STAY</h3>
+                            <p>Luxury boutique rooms, infinity pool access, and tranquil, uninterrupted ocean views.</p>
+                            <span class="experience-arrow">→</span>
+                        </div>
+                    </a>
+
+                    <!-- Card 3: CELEBRATE -->
+                    <a href="#events" class="experience-card reveal reveal-zoom">
+                        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=600" alt="Evening party string lights beach lounge" class="experience-card-bg">
+                        <div class="experience-card-overlay"></div>
+                        <div class="experience-card-content">
+                            <div class="experience-icon" aria-hidden="true">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z"/>
+                                    <path d="M14.5 9.5a2.5 2.5 0 0 1 0 5H9.5a2.5 2.5 0 0 0 0 5"/>
+                                </svg>
+                            </div>
+                            <h3>CELEBRATE</h3>
+                            <p>Beachfront weddings, birthday celebrations, brand launches, and dynamic corporate offsites.</p>
+                            <span class="experience-arrow">→</span>
+                        </div>
+                    </a>
+
+                    <!-- Card 4: PLAY -->
+                    <a href="#activities" class="experience-card reveal reveal-zoom">
+                        <img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?q=80&w=600" alt="Pickleball paddle and yellow ball on blue court background" class="experience-card-bg">
+                        <div class="experience-card-overlay"></div>
+                        <div class="experience-card-content">
+                            <div class="experience-icon" aria-hidden="true">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M8 12h8M12 8v8"/>
+                                </svg>
+                            </div>
+                            <h3>PLAY</h3>
+                            <p>Off-road remote-controlled racing, premium pickleball court, and coastal beach activities.</p>
+                            <span class="experience-arrow">→</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- SIGNATURE CUISINE SECTION --- -->
+        <section class="cuisine" id="cuisine">
+            <div class="container">
+                <div class="cuisine-grid">
+                    <!-- Left: Culinary Storytelling -->
+                    <div class="cuisine-left reveal reveal-left">
+                        <p class="section-sub">Signature Cuisine</p>
+                        <h2>Crafted by the <br><span class="serif-italic">sea.</span></h2>
+                        <div style="color: var(--text-muted); line-height: 1.8; font-weight: 300; margin-bottom: 3.5rem;">
+                            <p class="lead">A luxury culinary journey where local coastal flavours meet sophisticated global gastronomy.</p>
+                            <br>
+                            <p>Our kitchen celebrates local, fresh-caught seafood and robust coastal spices, refined with elegant culinary techniques. Pair your dining experience with artisan cocktails meticulously designed to mimic the rich, golden colors of the Gorai horizon, and let the rhythmic murmur of the sea perfect your evening.</p>
+                        </div>
+                        <a href="#booking" class="btn btn-outline">View Menu</a>
+                    </div>
+                    
+                    <!-- Right: Stacked Editorial Photography -->
+                    <div class="cuisine-right reveal reveal-right">
+                        <!-- Main Seafood Platter Image -->
+                        <div class="cuisine-img-card cuisine-main-img">
+                            <img src="https://images.unsplash.com/photo-1559737607-b248a3c8d69f?q=80&w=1000" alt="Beautifully prepared luxury lobster seafood platter">
+                        </div>
+                        <!-- Overlapping Craft Cocktail Image -->
+                        <div class="cuisine-img-card cuisine-sub-img">
+                            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800" alt="Artisan sunset cocktail served with fresh lime garnishes by the beachfront">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- SUNSET EXPERIENCE SECTION --- -->
+        <section class="sunset-experience" id="sunset">
+            <!-- Full Width Cinematic Image -->
+            <div class="sunset-bg-wrap">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600" alt="Spectacular gold ocean sunset reflections on waves at Gorai Beach">
+            </div>
+            <div class="sunset-overlay"></div>
+            
+            <div class="container">
+                <div class="sunset-content float-item">
+                    <p class="section-sub" style="color: var(--accent);">The Golden Hour</p>
+                    <h2 class="reveal reveal-up">Watch The Sun Set.<br><span class="sunset-gradient">Stay For The Magic.</span></h2>
+                    <div class="reveal reveal-up">
+                        <a href="#booking" class="btn btn-accent btn-large">Book Your Evening</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- RESORT SECTION --- -->
+        <section class="resort" id="resort">
+            <div class="container">
+                <div class="resort-grid">
+                    <!-- Left: Room Presentation -->
+                    <div class="resort-left reveal reveal-left">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1200" alt="Luxury beachfront resort bedroom with private balcony facing the sea">
+                    </div>
+                    
+                    <!-- Right: Amenities & Booking -->
+                    <div class="resort-right reveal reveal-right">
+                        <p class="section-sub">Luxury Stays</p>
+                        <h2>Stay. Relax. <br><span class="serif-italic">rejuvenate.</span></h2>
+                        <p class="lead">Immerse yourself in coastal boutique hospitality. Wake up to panoramic sea views, breathe the salt air, and lounge by the pool.</p>
+                        
+                        <!-- Amenity Feature Icons -->
+                        <div class="resort-amenities">
+                            <!-- Amenity 1: Sea View -->
+                            <div class="amenity-item">
+                                <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M2 10s3-3 10-3 10 3 10 3"/>
+                                    <path d="M2 17s3-3 10-3 10 3 10 3"/>
+                                    <path d="M2 14s3-3 10-3 10 3 10 3"/>
+                                </svg>
+                                <span class="amenity-label">Sea View</span>
+                            </div>
+                            <!-- Amenity 2: Swimming Pool -->
+                            <div class="amenity-item">
+                                <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M2 20a4 4 0 0 0 8 0 4 4 0 0 0 8 0 4 4 0 0 0 4 0"/>
+                                    <path d="M2 16a4 4 0 0 0 8 0 4 4 0 0 0 8 0 4 4 0 0 0 4 0"/>
+                                    <path d="M12 2v10M9 8h6"/>
+                                </svg>
+                                <span class="amenity-label">Pool Access</span>
+                            </div>
+                            <!-- Amenity 3: Beach Access -->
+                            <div class="amenity-item">
+                                <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M8 12a4 4 0 0 1 8 0"/>
+                                    <path d="M12 2v10M12 22v-4"/>
+                                </svg>
+                                <span class="amenity-label">Beach Access</span>
+                            </div>
+                            <!-- Amenity 4: Breakfast -->
+                            <div class="amenity-item">
+                                <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 8h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2"/>
+                                    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                                    <line x1="6" y1="2" x2="6" y2="4"/>
+                                    <line x1="10" y1="2" x2="10" y2="4"/>
+                                    <line x1="14" y1="2" x2="14" y2="4"/>
+                                </svg>
+                                <span class="amenity-label">Breakfast</span>
+                            </div>
+                            <!-- Amenity 5: Free WiFi -->
+                            <div class="amenity-item">
+                                <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14 0"/>
+                                    <path d="M8.42 15.66a7 7 0 0 1 7.16 0"/>
+                                    <path d="M10.9 18.5a3 3 0 0 1 2.2 0"/>
+                                    <line x1="12" y1="22" x2="12.01" y2="22"/>
+                                </svg>
+                                <span class="amenity-label">Free WiFi</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#booking" class="btn btn-outline">Explore Rooms</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- DUAL SPLIT: CORPORATE & ACTIVITIES --- -->
+        <section class="dual-section" id="events">
+            <div class="dual-grid">
+                <!-- Card 1: Corporate Events -->
+                <a href="#booking" class="dual-card reveal reveal-left">
+                    <img src="https://images.unsplash.com/photo-1505232458729-54984d372762?q=80&w=1000" alt="Beachfront elegant dining event setup with warm string lights" class="dual-card-bg">
+                    <div class="dual-card-overlay"></div>
+                    <div class="dual-card-content">
+                        <p class="section-sub" style="color: var(--accent);">Corporate Events</p>
+                        <h2>Elevate Your Next <br><span class="serif-italic">offsite.</span></h2>
+                        <p>Ditch the boring conference rooms. Foster team collaboration, organize product launches, or host elegant beachfront corporate retreats under the stars.</p>
+                        <span class="btn btn-secondary">Request Proposal</span>
+                    </div>
+                </a>
+                
+                <!-- Card 2: Play Activities -->
+                <a href="#activities" class="dual-card reveal reveal-right">
+                    <img src="https://images.unsplash.com/photo-1594787318286-3d835c1d207f?q=80&w=1000" alt="High speed RC racing car on custom track" class="dual-card-bg">
+                    <div class="dual-card-overlay"></div>
+                    <div class="dual-card-content">
+                        <p class="section-sub" style="color: var(--primary);">Play & activities</p>
+                        <h2>Play. Compete. <br><span class="serif-italic">enjoy.</span></h2>
+                        <p>Enjoy premium pickleball tournaments, high-speed remote-controlled off-road racing, and beachfront games tailored for families and teams.</p>
+                        <span class="btn btn-primary">Explore Activities</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- --- ACTIVITIES GRID DETAIL --- -->
+        <section class="activities-detail" id="activities">
+            <div class="container">
+                <div class="act-header reveal reveal-up">
+                    <p class="section-sub">Recreation & Play</p>
+                    <h2>Action by the <br><span class="serif-italic">ocean.</span></h2>
+                    <p class="lead">Inject high-energy excitement into your beachfront stay with our premium facilities.</p>
+                </div>
+                
+                <div class="act-grid stagger-parent">
+                    <!-- Activity 1 -->
+                    <article class="act-card reveal reveal-up">
+                        <div class="act-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1594787318286-3d835c1d207f?q=80&w=600" alt="RC car close up detailing suspension on dirty track">
+                        </div>
+                        <div class="act-content">
+                            <h3>RC Racing</h3>
+                            <p>Challenge colleagues and friends to high-speed action on our custom-built dirt track featuring dramatic curves and jumps, powered by professional-grade off-road remote cars.</p>
+                        </div>
+                    </article>
+
+                    <!-- Activity 2 -->
+                    <article class="act-card reveal reveal-up">
+                        <div class="act-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?q=80&w=600" alt="Close up profile of two pickleball paddles crossing over blue court">
+                        </div>
+                        <div class="act-content">
+                            <h3>Pickleball</h3>
+                            <p>Unleash your competitive streak on our premium, fully-equipped court. Perfect for doubles matches, team brackets, private coaching, or leisurely play with friends.</p>
+                        </div>
+                    </article>
+
+                    <!-- Activity 3 -->
+                    <article class="act-card reveal reveal-up">
+                        <div class="act-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?q=80&w=600" alt="Golden coast beachfront activities sunset beach volleyball net setup">
+                        </div>
+                        <div class="act-content">
+                            <h3>Beach Games & More</h3>
+                            <p>Enjoy coastal leisure with beach volleyball, tug-of-war, customized team exercises, sunset oceanside yoga, and vibrant weekend acoustic music sessions.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- INSTAGRAM MASONRY GALLERY --- -->
+        <section class="instagram-gallery" id="gallery">
+            <div class="container">
+                <div class="insta-header reveal reveal-up">
+                    <p class="section-sub">Life @ SAO By The Sea</p>
+                    <h2>Capturing the <br><span class="serif-italic">magic.</span></h2>
+                    <p class="lead">See the moments, the smiles, the plates, and the sunsets that define our high-end beachfront lifestyle.</p>
+                </div>
+                
+                <!-- Instagram Masonry Grid -->
+                <div class="insta-grid stagger-parent">
+                    <div class="insta-item reveal reveal-zoom">
+                        <img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?q=80&w=400" alt="Tropical artisan cocktail in glass on wood table">
+                        <div class="insta-overlay">
+                            <span>#sao</span>
+                        </div>
+                    </div>
+                    <div class="insta-item reveal reveal-zoom">
+                        <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?q=80&w=400" alt="Elegant beach beds lined up on beach sand facing ocean">
+                        <div class="insta-overlay">
+                            <span>#escape</span>
+                        </div>
+                    </div>
+                    <div class="insta-item reveal reveal-zoom">
+                        <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=400" alt="Pristine outdoor infinity swimming pool at luxury resort">
+                        <div class="insta-overlay">
+                            <span>#resort</span>
+                        </div>
+                    </div>
+                    <div class="insta-item reveal reveal-zoom">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400" alt="Delicious grilled shrimp seafood skewered on flatbread platter">
+                        <div class="insta-overlay">
+                            <span>#seafood</span>
+                        </div>
+                    </div>
+                    <div class="insta-item reveal reveal-zoom">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400" alt="Vibrant DJ console mixer at beachfront dance party">
+                        <div class="insta-overlay">
+                            <span>#celebrate</span>
+                        </div>
+                    </div>
+                    <div class="insta-item reveal reveal-zoom">
+                        <img src="https://images.unsplash.com/photo-1519225495810-7512c696505a?q=80&w=400" alt="Couple laughing while dining outdoors at sunset beachfront lounge">
+                        <div class="insta-overlay">
+                            <span>#moments</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="insta-btn-wrap reveal reveal-up">
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Follow Us On Instagram</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- TESTIMONIALS SECTION --- -->
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <div class="test-header reveal reveal-up">
+                    <p class="section-sub">Guest Reviews</p>
+                    <h2>What our guests say</h2>
+                </div>
+                
+                <div class="test-carousel-wrap reveal reveal-up">
+                    <!-- Carousel Left Control -->
+                    <button type="button" class="carousel-control carousel-prev" id="carouselPrev" aria-label="Previous review">
+                        <span>←</span>
+                    </button>
+                    
+                    <div class="test-carousel">
+                        <div class="test-track" id="carouselTrack">
+                            
+                            <!-- Slide 1 -->
+                            <div class="test-slide">
+                                <div class="test-card glass-panel-dark">
+                                    <div class="test-stars">★★★★★</div>
+                                    <blockquote class="test-quote">“Amazing food, beautiful sunsets and the best hospitality! SAO BY THE SEA is a perfect weekend escape right here in Mumbai.”</blockquote>
+                                    <p class="test-author">Priya M.</p>
+                                    <p class="test-status">Google Verified Local Guide</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Slide 2 -->
+                            <div class="test-slide">
+                                <div class="test-card glass-panel-dark">
+                                    <div class="test-stars">★★★★★</div>
+                                    <blockquote class="test-quote">“We hosted our corporate leadership offsite here. The setup was gorgeous, the food was spectacular, and the pickleball tournament was a huge hit. Highly recommend!”</blockquote>
+                                    <p class="test-author">Rohit S.</p>
+                                    <p class="test-status">HR Director, TechCorp</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Slide 3 -->
+                            <div class="test-slide">
+                                <div class="test-card glass-panel-dark">
+                                    <div class="test-stars">★★★★★</div>
+                                    <blockquote class="test-quote">“A true slice of luxury. The rooms are pristine, the pool overlooks the ocean, and watching the sunset with their artisan cocktails is absolute bliss.”</blockquote>
+                                    <p class="test-author">Ananya D.</p>
+                                    <p class="test-status">Luxury Travel Blogger</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <!-- Carousel Right Control -->
+                    <button type="button" class="carousel-control carousel-next" id="carouselNext" aria-label="Next review">
+                        <span>→</span>
+                    </button>
+                    
+                    <!-- Carousel Indicators -->
+                    <div class="carousel-indicators" id="carouselIndicators">
+                        <button type="button" class="carousel-indicator active" data-index="0" aria-label="Go to slide 1"></button>
+                        <button type="button" class="carousel-indicator" data-index="1" aria-label="Go to slide 2"></button>
+                        <button type="button" class="carousel-indicator" data-index="2" aria-label="Go to slide 3"></button>
+                    </div>
+                </div>
+                
+                <!-- Google Badge Rating -->
+                <div class="google-badge reveal reveal-up">
+                    <div class="gb-logo" aria-hidden="true">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22c-.87-2.6-2.86-4.53-6.16-4.53z" fill="#FBBC05"/>
+                            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                        </svg>
+                    </div>
+                    <span class="gb-text">Highly rated on <strong style="color: var(--white);">Google Reviews</strong> with <span class="gb-rating">4.6 / 5 stars</span> based on 1,200+ visits</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- BOOKING & DETAILS SECTION --- -->
+        <section class="booking" id="booking">
+            <div class="container">
+                <div class="booking-grid">
+                    
+                    <!-- Left: Custom Booking Form -->
+                    <div class="booking-form-wrap reveal reveal-left">
+                        <p class="section-sub">Plan Your Visit</p>
+                        <h2>We’d love to welcome you.</h2>
+                        <p class="lead">Reserve your table or plan your stay for an unforgettable beachfront experience by the sea.</p>
+                        
+                        <form class="booking-form" id="bookingForm">
+                            <!-- Name -->
+                            <div class="form-group">
+                                <label for="bookingName">Name</label>
+                                <input type="text" id="bookingName" name="name" placeholder="Your Name" required>
+                            </div>
+                            <!-- Phone -->
+                            <div class="form-group">
+                                <label for="bookingPhone">Phone Number</label>
+                                <input type="tel" id="bookingPhone" name="phone" placeholder="Contact Number" required>
+                            </div>
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label for="bookingEmail">Email</label>
+                                <input type="email" id="bookingEmail" name="email" placeholder="Email Address" required>
+                            </div>
+                            <!-- Selection Category -->
+                            <div class="form-group">
+                                <label for="bookingExperience">Choose Experience</label>
+                                <select id="bookingExperience" name="experience" required>
+                                    <option value="" disabled selected>Select option</option>
+                                    <option value="dine">Book a Table (Dining)</option>
+                                    <option value="stay">Reserve a Stay (Resort)</option>
+                                    <option value="celebrate">Host an Event / Party</option>
+                                    <option value="play">Book Courts / Track</option>
+                                </select>
+                            </div>
+                            <!-- Date -->
+                            <div class="form-group">
+                                <label for="bookingDate">Select Date</label>
+                                <input type="date" id="bookingDate" name="date" required>
+                            </div>
+                            <!-- Time -->
+                            <div class="form-group">
+                                <label for="bookingTime">Time</label>
+                                <select id="bookingTime" name="time" required>
+                                    <option value="" disabled selected>Select time</option>
+                                    <option value="12:00 PM">Lunch (12:00 PM - 3:00 PM)</option>
+                                    <option value="4:00 PM">Sunset (4:00 PM - 7:00 PM)</option>
+                                    <option value="8:00 PM">Dinner (8:00 PM - 11:00 PM)</option>
+                                    <option value="overnight">Overnight Stay Check-in</option>
+                                </select>
+                            </div>
+                            <!-- Guests count -->
+                            <div class="form-group form-full">
+                                <label for="bookingGuests">Number of Guests</label>
+                                <select id="bookingGuests" name="guests" required>
+                                    <option value="" disabled selected>Select guest count</option>
+                                    <option value="1-2">1 - 2 Guests</option>
+                                    <option value="3-5">3 - 5 Guests</option>
+                                    <option value="6-10">6 - 10 Guests</option>
+                                    <option value="10+">Corporate Offsite / Group (10+)</option>
+                                </select>
+                            </div>
+                            <!-- Message -->
+                            <div class="form-group form-full">
+                                <label for="bookingMessage">Special Requests (Optional)</label>
+                                <textarea id="bookingMessage" name="message" rows="4" placeholder="Any dietary restrictions, event themes, or room preferences..."></textarea>
+                            </div>
+                            
+                            <div class="booking-btn-wrap">
+                                <button type="submit" class="btn btn-accent">Reserve Your Experience</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Right: Map Integration & Details -->
+                    <div class="booking-map-wrap reveal reveal-right">
+                        <!-- Elegant Google Map of Gorai Beach, Mumbai -->
+                        <div class="map-card">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.1764619725845!2d72.77589397615654!3d19.29749114529068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b102ea60c9df%3A0xe54e60dc6ebcfad7!2sGorai%20Beach!5e0!3m2!1sen!2sin!4v1716723223000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Google Maps - Location of SAO BY THE SEA on Gorai Beach, Mumbai"></iframe>
+                        </div>
+                        
+                        <!-- Contact Parameters -->
+                        <div class="contact-info-list stagger-parent">
+                            <!-- Location -->
+                            <div class="info-item reveal reveal-up">
+                                <svg class="info-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                                <div class="info-detail">
+                                    <h4>Visit Us</h4>
+                                    <p>Sao by the Sea,<br>Gorai Beach, Borivali West, Mumbai - 400091</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Operating hours -->
+                            <div class="info-item reveal reveal-up">
+                                <svg class="info-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <div class="info-detail">
+                                    <h4>Opening Hours</h4>
+                                    <p>Open Everyday<br>12:00 PM – 1:00 AM</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Phone -->
+                            <div class="info-item reveal reveal-up">
+                                <svg class="info-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.21.96L6.5 8.5a16 16 0 006 6l1.27-1.27a1 1 0 01.961-.21l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C7.56 21 3 16.44 3 10V5z"/>
+                                </svg>
+                                <div class="info-detail">
+                                    <h4>Get in Touch</h4>
+                                    <a href="tel:+918451931319">+91 84519 31319</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Email & Socials -->
+                            <div class="info-item reveal reveal-up">
+                                <svg class="info-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                                <div class="info-detail">
+                                    <h4>Write to Us</h4>
+                                    <a href="mailto:hello@saobythesea.com">hello@saobythesea.com</a>
+                                    
+                                    <div class="info-socials">
+                                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="info-social-link" aria-label="Instagram">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                                        </a>
+                                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="info-social-link" aria-label="Facebook">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                                        </a>
+                                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="info-social-link" aria-label="YouTube">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.95 1.96C5.12 19.5 12 19.5 12 19.5s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- --- GLASSMORPHISM SUCCESS RESERVATION MODAL --- -->
+    <div class="modal-overlay" id="bookingSuccessModal" aria-hidden="true">
+        <div class="success-modal glass-panel">
+            <div class="modal-icon" aria-hidden="true">✓</div>
+            <h3>Thank You!</h3>
+            <p>Your beachfront reservation request has been successfully sent to SAO BY THE SEA. A representative from our hospitality team will contact you shortly to confirm your booking.</p>
+            <button type="button" class="btn btn-primary" onclick="closeModal()">Return to SAO</button>
+        </div>
+    </div>
+
+    <!-- --- FOOTER --- -->
+    <footer class="footer">
+        <div class="container">
+            
+            <div class="footer-top stagger-parent">
+                <!-- Branding column -->
+                <div class="footer-logo-wrap reveal reveal-up">
+                    <img src="logos/sao_logo_capsule.png" alt="SAO BY THE SEA Logo">
+                    <p>A luxury coastal escape on Gorai Beach, Mumbai. Dine under palm trees, stay in beachside comfort, celebrate premium occasions, and experience unforgettable play by the sea.</p>
+                </div>
+                
+                <!-- Quick links -->
+                <div class="footer-col reveal reveal-up">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#story">Our Story</a></li>
+                        <li><a href="#experiences">Experiences</a></li>
+                        <li><a href="#cuisine">Coastal Dining</a></li>
+                        <li><a href="#resort">Boutique Stays</a></li>
+                        <li><a href="#activities">Play & Recreation</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support & Proposal -->
+                <div class="footer-col reveal reveal-up">
+                    <h4>Reservations</h4>
+                    <ul>
+                        <li><a href="#booking">Book a Table</a></li>
+                        <li><a href="#booking">Book a Room</a></li>
+                        <li><a href="#events">Plan an Event</a></li>
+                        <li><a href="#booking">Activities Booking</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact info -->
+                <div class="footer-col reveal reveal-up">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <span class="footer-contact-label">Location</span>
+                            <span style="color: rgba(255,255,255,0.7); font-size:0.9rem; font-weight:300;">Gorai Beach, Borivali West, Mumbai, 400091</span>
+                        </li>
+                        <li>
+                            <span class="footer-contact-label">Phone</span>
+                            <a href="tel:+918451931319" class="footer-contact-link">+91 84519 31319</a>
+                        </li>
+                        <li>
+                            <span class="footer-contact-label">Email Address</span>
+                            <a href="mailto:hello@saobythesea.com" class="footer-contact-link">hello@saobythesea.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 SAO BY THE SEA. All rights reserved.</p>
+                <p style="font-size: 0.8rem; color: rgba(255,255,255,0.25);">Designed & Developed for Elite Hospitality.</p>
+            </div>
+            
+        </div>
+    </footer>
+
+    <!-- Script File -->
+    <script src="script.js"></script>
+</body>
+</html>
