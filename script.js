@@ -1,5 +1,42 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- PHONE VALIDATION UTILITY ---
+    // Enforces exactly 10 digits and blocks fake sequences or repeating series to prevent misinformation.
+    const isValidPhoneNumber = (phoneStr) => {
+        let digits = phoneStr.replace(/\D/g, ''); // Strip non-digit characters
+        
+        // Strip country code prefix '91' if it's 12 digits
+        if (digits.length === 12 && digits.startsWith('91')) {
+            digits = digits.substring(2);
+        }
+        
+        if (digits.length !== 10) {
+            return { valid: false, reason: "Phone number must be exactly 10 digits." };
+        }
+        
+        // Block dummy sequences and repeating series
+        const blockedSequences = [
+            "1234567890", "0123456789", 
+            "9876543210", "0987654321",
+            "1111111111", "2222222222", 
+            "3333333333", "4444444444", 
+            "5555555555", "6666666666", 
+            "7777777777", "8888888888", 
+            "9999999999", "0000000000"
+        ];
+        
+        if (blockedSequences.includes(digits)) {
+            return { valid: false, reason: "Please enter a valid, active phone number." };
+        }
+        
+        const isAllSame = /^(\d)\1{9}$/.test(digits);
+        if (isAllSame) {
+            return { valid: false, reason: "Please enter a valid, active phone number." };
+        }
+        
+        return { valid: true, digits: digits };
+    };
+
     // --- 1. DYNAMIC HEADER STATES ON SCROLL ---
     const header = document.getElementById('header');
     
@@ -121,6 +158,13 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Please fill in all required fields to reserve your experience.');
             return;
         }
+
+        // Validate phone number digits and pattern
+        const phoneValidation = isValidPhoneNumber(phone);
+        if (!phoneValidation.valid) {
+            alert(phoneValidation.reason);
+            return;
+        }
         
         // Map category IDs to descriptive text
         const expLabels = {
@@ -135,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const message = `*SAO BY THE SEA - RESERVATION INQUIRY*\n` +
                         `--------------------------------------\n` +
                         `👤 *Name:* ${name}\n` +
-                        `📱 *Phone:* ${phone}\n` +
+                        `📱 *Phone:* ${phoneValidation.digits}\n` +
                         `✨ *Experience:* ${friendlyExp}\n` +
                         `📅 *Date:* ${date}\n` +
                         `--------------------------------------\n` +
@@ -144,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const encodedMessage = encodeURIComponent(message);
         const waUrl = `https://wa.me/919321636513?text=${encodedMessage}`;
         
-        console.log('Sending reservation data via WhatsApp to +91 93216 36513:', { name, phone, friendlyExp, date });
+        console.log('Sending reservation data via WhatsApp to +91 93216 36513:', { name, phone: phoneValidation.digits, friendlyExp, date });
         
         // Reset form
         bookingForm.reset();
@@ -278,11 +322,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            // Validate phone number digits and pattern
+            const phoneValidation = isValidPhoneNumber(phone);
+            if (!phoneValidation.valid) {
+                alert(phoneValidation.reason);
+                return;
+            }
+
             // Construct text message
             const message = `*SAO BY THE SEA - EVENTS INQUIRY*\n` +
                             `--------------------------------------\n` +
                             `👤 *Name:* ${name}\n` +
-                            `📱 *Phone:* ${phone}\n` +
+                            `📱 *Phone:* ${phoneValidation.digits}\n` +
                             `📅 *Event Date:* ${date}\n` +
                             `🎉 *Event Type:* ${type}\n` +
                             `👥 *Est. Guests:* ${guests}\n` +
@@ -317,11 +368,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            // Validate phone number digits and pattern
+            const phoneValidation = isValidPhoneNumber(phone);
+            if (!phoneValidation.valid) {
+                alert(phoneValidation.reason);
+                return;
+            }
+
             // Construct text message
             const message = `*SAO BY THE SEA - TABLE RESERVATION*\n` +
                             `--------------------------------------\n` +
                             `👤 *Name:* ${name}\n` +
-                            `📱 *Phone:* ${phone}\n` +
+                            `📱 *Phone:* ${phoneValidation.digits}\n` +
                             `📅 *Date:* ${date}\n` +
                             `⏰ *Time:* ${time}\n` +
                             `👥 *Guests:* ${guests}\n` +
@@ -357,11 +415,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            // Validate phone number digits and pattern
+            const phoneValidation = isValidPhoneNumber(phone);
+            if (!phoneValidation.valid) {
+                alert(phoneValidation.reason);
+                return;
+            }
+
             // Construct text message
             const message = `*SAO BY THE SEA - ROOM RESERVATION*\n` +
                             `--------------------------------------\n` +
                             `👤 *Name:* ${name}\n` +
-                            `📱 *Phone:* ${phone}\n` +
+                            `📱 *Phone:* ${phoneValidation.digits}\n` +
                             `📅 *Check-In:* ${checkin}\n` +
                             `📅 *Check-Out:* ${checkout}\n` +
                             `🏡 *Room Type:* ${type}\n` +
