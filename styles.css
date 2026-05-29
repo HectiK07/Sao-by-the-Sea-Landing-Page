@@ -181,6 +181,11 @@ section {
     box-shadow: 0 10px 25px rgba(7, 59, 82, 0.2);
 }
 
+/* Hide mobile-only buttons on desktop view */
+.mobile-only-btn {
+    display: none !important;
+}
+
 /* --- TYPOGRAPHY UTILITIES --- */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
@@ -2808,6 +2813,32 @@ p.lead {
         width: 100%;
     }
 
+    .hero-btns .btn-secondary {
+        background-color: transparent !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        color: var(--white) !important;
+        box-shadow: none !important;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+    
+    .hero-btns .btn-secondary:hover {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        border-color: var(--white) !important;
+    }
+
+    .mobile-only-btn {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none !important;
+        cursor: default !important;
+    }
+
+    .hero-rating-bar {
+        display: none !important;
+    }
+
     .cuisine-left,
     .resort-right {
         padding: 4rem 1.5rem; /* Extra tight safe margins on mobile viewports */
@@ -3562,11 +3593,14 @@ p.lead {
         box-shadow: none;
         flex-direction: row-reverse; /* Circle icon on the right, text on left */
         gap: 6px; /* Optimized gap for mobile */
+        background-color: rgba(250, 250, 248, 0.7) !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
     }
 
     .sticky-tab:hover {
         transform: none;
-        background-color: rgba(250, 250, 248, 0.98);
+        background-color: rgba(250, 250, 248, 0.85) !important;
     }
 
     .sticky-tab .tab-icon-circle {

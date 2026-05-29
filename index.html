@@ -164,6 +164,16 @@
                     <div class="hero-btns reveal reveal-up">
                         <a href="#booking" class="btn btn-primary">RESERVATION INQUIRY</a>
                         <a href="#resort" class="btn btn-secondary">EXPLORE RESORT</a>
+                        <div class="btn btn-secondary mobile-only-btn" style="cursor: default;">
+                            <svg class="google-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" style="margin-right: 8px; vertical-align: middle;">
+                                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+                                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22c-.87-2.6-2.86-4.53-6.16-4.53z" fill="#FBBC05" />
+                                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335" />
+                            </svg>
+                            <span>1,200+ Reviews</span>
+                            <span style="color: var(--accent); margin-left: 8px;">★★★★★</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -993,22 +1003,28 @@
     <!-- --- STICKY RESERVATION TABS --- -->
     <div class="sticky-tabs-container">
         <!-- Events Tab -->
-        <button type="button" class="sticky-tab tab-events" id="stickyTabEvents" aria-label="Open Events Inquiry Drawer">
+        <button type="button" class="sticky-tab tab-events" id="stickyTabEvents"
+            aria-label="Open Events Inquiry Drawer">
             <span class="tab-text">Events</span>
             <span class="tab-icon-circle">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                        stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </span>
         </button>
 
         <!-- Table Reservation Tab -->
-        <button type="button" class="sticky-tab tab-table" id="stickyTabTable" aria-label="Open Table Reservation Drawer">
+        <button type="button" class="sticky-tab tab-table" id="stickyTabTable"
+            aria-label="Open Table Reservation Drawer">
             <span class="tab-text">Dine</span>
             <span class="tab-icon-circle">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M8 21h8M12 11v10" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M21 2v9c0 1.1-.9 2-2 2h-4a2 2 0 0 1-2-2V2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M8 21h8M12 11v10" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M21 2v9c0 1.1-.9 2-2 2h-4a2 2 0 0 1-2-2V2" stroke-linecap="round"
+                        stroke-linejoin="round" />
                 </svg>
             </span>
         </button>
@@ -1018,8 +1034,9 @@
             <span class="tab-text">Stay</span>
             <span class="tab-icon-circle">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M9 22V12h6v10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M9 22V12h6v10" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </span>
         </button>
@@ -1039,8 +1056,9 @@
         <div class="drawer-content">
             <span class="section-sub">Bespoke Beachside Gatherings</span>
             <h3>Special Events</h3>
-            <p class="drawer-lead">Host your beachfront wedding, corporate offsite, or party. Submitted directly to our Events Desk via WhatsApp.</p>
-            
+            <p class="drawer-lead">Host your beachfront wedding, corporate offsite, or party. Submitted directly to our
+                Events Desk via WhatsApp.</p>
+
             <form class="drawer-form" id="whatsappEventsForm">
                 <div class="form-group">
                     <label for="waEventsName">Full Name</label>
@@ -1094,8 +1112,9 @@
         <div class="drawer-content">
             <span class="section-sub">Dine Under The Palms</span>
             <h3>Table Reservation</h3>
-            <p class="drawer-lead">Reserve your beachfront dining table. Submitted directly to our Table Desk via WhatsApp.</p>
-            
+            <p class="drawer-lead">Reserve your beachfront dining table. Submitted directly to our Table Desk via
+                WhatsApp.</p>
+
             <form class="drawer-form" id="whatsappTableForm">
                 <div class="form-group">
                     <label for="waTableName">Full Name</label>
@@ -1157,8 +1176,9 @@
         <div class="drawer-content">
             <span class="section-sub">Boutique Beachfront Luxury</span>
             <h3>Room Bookings</h3>
-            <p class="drawer-lead">Inquire about our beachfront rooms & suites. Submitted directly to our Stay Desk via WhatsApp.</p>
-            
+            <p class="drawer-lead">Inquire about our beachfront rooms & suites. Submitted directly to our Stay Desk via
+                WhatsApp.</p>
+
             <form class="drawer-form" id="whatsappRoomForm">
                 <div class="form-group">
                     <label for="waRoomName">Full Name</label>
@@ -1206,9 +1226,12 @@
     </div>
 
     <!-- Floating WhatsApp FAB -->
-    <a href="https://wa.me/919321636513?text=Hi%20SAO%20BY%20THE%20SEA%2C%20I%27d%20like%20to%20make%20an%20inquiry%21" target="_blank" class="floating-wa-btn" aria-label="Chat with us on WhatsApp">
+    <a href="https://wa.me/919321636513?text=Hi%20SAO%20BY%20THE%20SEA%2C%20I%27d%20like%20to%20make%20an%20inquiry%21"
+        target="_blank" class="floating-wa-btn" aria-label="Chat with us on WhatsApp">
         <svg viewBox="0 0 24 24" width="28" height="28" fill="none">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M18.403 5.633A8.919 8.919 0 0012.005 3c-4.948 0-8.976 4.027-8.978 8.977 0 1.58.413 3.126 1.198 4.488L3 21.116l4.759-1.249a8.981 8.981 0 004.24 1.059h.004c4.947 0 8.975-4.027 8.977-8.977a8.922 8.922 0 00-2.577-6.316zm-6.398 13.81h-.004a7.447 7.447 0 01-3.798-1.041l-.272-.162-2.824.741.753-2.753-.177-.282a7.448 7.448 0 01-1.141-3.971c.002-4.114 3.349-7.461 7.465-7.461a7.413 7.413 0 015.281 2.188 7.417 7.417 0 012.185 5.285c-.002 4.114-3.348 7.462-7.468 7.462zm4.093-5.589c-.225-.113-1.327-.655-1.533-.73-.205-.075-.354-.112-.504.112-.15.225-.579.73-.709.88-.13.15-.26.168-.485.056-.225-.113-.949-.349-1.809-1.116-.669-.597-1.121-1.334-1.253-1.559-.13-.225-.014-.347.099-.459.102-.102.225-.262.337-.393.112-.13.15-.225.225-.375.075-.15.037-.281-.019-.393-.056-.113-.504-1.217-.692-1.666-.181-.437-.365-.377-.504-.384-.13-.007-.28-.007-.43-.007-.15 0-.393.056-.599.28-.206.225-.786.768-.786 1.87 0 1.103.8 2.167.912 2.317.112.15 1.574 2.404 3.814 3.37.533.23.95.367 1.275.47.535.17 1.02.146 1.402.09.426-.063 1.327-.543 1.514-1.068.187-.525.187-.975.13-.106-.056-.112-.205-.15-.43-.262z" fill="white"/>
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M18.403 5.633A8.919 8.919 0 0012.005 3c-4.948 0-8.976 4.027-8.978 8.977 0 1.58.413 3.126 1.198 4.488L3 21.116l4.759-1.249a8.981 8.981 0 004.24 1.059h.004c4.947 0 8.975-4.027 8.977-8.977a8.922 8.922 0 00-2.577-6.316zm-6.398 13.81h-.004a7.447 7.447 0 01-3.798-1.041l-.272-.162-2.824.741.753-2.753-.177-.282a7.448 7.448 0 01-1.141-3.971c.002-4.114 3.349-7.461 7.465-7.461a7.413 7.413 0 015.281 2.188 7.417 7.417 0 012.185 5.285c-.002 4.114-3.348 7.462-7.468 7.462zm4.093-5.589c-.225-.113-1.327-.655-1.533-.73-.205-.075-.354-.112-.504.112-.15.225-.579.73-.709.88-.13.15-.26.168-.485.056-.225-.113-.949-.349-1.809-1.116-.669-.597-1.121-1.334-1.253-1.559-.13-.225-.014-.347.099-.459.102-.102.225-.262.337-.393.112-.13.15-.225.225-.375.075-.15.037-.281-.019-.393-.056-.113-.504-1.217-.692-1.666-.181-.437-.365-.377-.504-.384-.13-.007-.28-.007-.43-.007-.15 0-.393.056-.599.28-.206.225-.786.768-.786 1.87 0 1.103.8 2.167.912 2.317.112.15 1.574 2.404 3.814 3.37.533.23.95.367 1.275.47.535.17 1.02.146 1.402.09.426-.063 1.327-.543 1.514-1.068.187-.525.187-.975.13-.106-.056-.112-.205-.15-.43-.262z"
+                fill="white" />
         </svg>
     </a>
 
