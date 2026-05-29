@@ -245,13 +245,14 @@ p.lead {
     width: 100%;
     z-index: 1000;
     padding: 0.6rem 0; /* Reduced padding to keep navbar slim */
+    background: transparent !important; /* Force transparent background in unscrolled state */
     transition: var(--transition);
 }
 
 .header.scrolled {
     top: 0; /* Align to the absolute top on scroll */
     padding: 0.4rem 0; /* Extremely compact scrolled navbar */
-    background: rgba(250, 250, 248, 0.85);
+    background: rgba(250, 250, 248, 0.98) !important; /* Force beautiful sand-white background on scroll */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     box-shadow: var(--shadow-soft);
@@ -1380,7 +1381,7 @@ p.lead {
 /* --- SIGNATURE CUISINE SECTION --- */
 .cuisine {
     padding: 0;
-    background-color: var(--background); /* Solid warm off-white background */
+    background-color: var(--white); /* Pure white background */
     overflow: hidden;
 }
 
@@ -1403,7 +1404,7 @@ p.lead {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: var(--background);
+    background-color: var(--white);
     /* Subtle wave line illustration overlay */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400' width='100%25' height='100%25' opacity='0.08'%3E%3Cpath d='M-50,380 C50,330 100,280 150,380 C200,480 300,330 450,380' fill='none' stroke='%234AB8D9' stroke-width='1'/%3E%3Cpath d='M-50,350 C60,300 110,250 160,350 C210,450 310,300 460,350' fill='none' stroke='%234AB8D9' stroke-width='1'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
@@ -1452,7 +1453,7 @@ p.lead {
     overflow: hidden;
     min-height: 500px;
     display: block;
-    background-color: var(--background);
+    background-color: var(--white);
 }
 
 .cuisine-bg-img {
@@ -2893,6 +2894,7 @@ p.lead {
 
     }
     
+@media (max-width: 991px) {
     .contact-info-list {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -3274,5 +3276,403 @@ p.lead {
     }
     100% {
         transform: translate3d(-50%, 0, 0);
+    }
+}
+
+/* --- STICKY TABS & BOOKING DRAWERS ADDITION --- */
+.sticky-tabs-container {
+    position: fixed;
+    right: 0;
+    top: 55%;
+    transform: translateY(-50%);
+    z-index: 2005; /* Float above the mobile menu and navigation */
+    display: flex;
+    flex-direction: column;
+    gap: 32px; /* Increased gap to isolate the buttons beautifully */
+    align-items: flex-end;
+}
+
+.sticky-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align vertical text to the top */
+    padding: 1.5rem 0.2rem; /* Tight horizontal padding to wrap the text tightly */
+    height: 152px; /* Increased height to prevent vertical label collision */
+    width: 36px; /* Slim width to wrap the text tightly, matching the subtle reference shape */
+    border: none;
+    border-radius: 16px 0 0 16px; /* Elegant roundness on left side */
+    cursor: pointer;
+    background-color: #FAFAF8; /* Solid, premium subtle sand-white (no transparency) */
+    border: 1px solid rgba(233, 196, 106, 0.45); /* Subtle gold outline border */
+    border-right: none; /* Merges into the right screen border */
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: -6px 6px 18px rgba(7, 59, 82, 0.06);
+    position: relative;
+}
+
+.sticky-tab:hover {
+    background-color: #ffffff !important; /* Solid pure white on hover (no transparency or blur) */
+    border-color: rgba(233, 196, 106, 0.85); /* Gold border glow on hover */
+    transform: translateX(-4px); /* Gentle clean shift on hover */
+    box-shadow: -10px 10px 24px rgba(7, 59, 82, 0.12);
+}
+
+.sticky-tab .tab-icon-circle {
+    position: absolute;
+    left: -18px; /* Center circle perfectly on the left border of the slim button */
+    bottom: 8px; /* Adjusted down for perfect alignment and clearance */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px; /* 36px circular badge matches the slim button width perfectly */
+    height: 36px;
+    border-radius: 50%;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    flex-shrink: 0;
+    z-index: 10;
+    box-shadow: -3px 3px 8px rgba(7, 59, 82, 0.15);
+}
+
+.sticky-tab .tab-icon-circle svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+}
+
+.tab-events .tab-icon-circle {
+    background-color: var(--accent); /* Sunset gold circle */
+    color: var(--secondary); /* Dark deep navy icon */
+    border: 1.5px solid var(--secondary); /* Deep navy wrap */
+}
+
+.tab-table .tab-icon-circle {
+    background-color: var(--secondary); /* Dark deep navy circle */
+    color: var(--accent); /* Sunset gold icon */
+    border: 1.5px solid var(--accent); /* Luxurious gold wrap */
+}
+
+.tab-room .tab-icon-circle {
+    background-color: var(--primary); /* Ocean blue circle */
+    color: var(--white); /* White icon */
+    border: 1.5px solid rgba(255, 255, 255, 0.95); /* Luxurious white wrap */
+}
+
+.sticky-tab:hover .tab-icon-circle {
+    transform: scale(1.1) translateY(-1px) rotate(-4deg); /* Balanced, subtle micro-animation */
+    box-shadow: -5px 5px 12px rgba(7, 59, 82, 0.2);
+}
+
+.sticky-tab .tab-text {
+    display: inline-block;
+    white-space: nowrap;
+    writing-mode: vertical-rl; /* Vertical writing mode like reference image */
+    transform: rotate(180deg); /* Oriented nicely bottom-to-top reading flow */
+    font-family: var(--font-body);
+    font-size: 0.88rem; /* Increased font size for higher legibility and bold impact */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em; /* Generous letter spacing for luxury aesthetic */
+    color: var(--secondary); /* High contrast brand navy lettering */
+    margin-bottom: 0; /* Remove margin-bottom since circle is absolute */
+}
+
+/* Side Drawer Component */
+.side-drawer {
+    position: fixed;
+    top: 0;
+    right: -460px; /* Off-screen by default */
+    width: 440px;
+    height: 100vh;
+    z-index: 2010; /* Float above sticky tabs */
+    padding: 4rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: -15px 0 40px rgba(7, 59, 82, 0.18);
+    overflow-y: auto;
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+    background: rgba(250, 250, 248, 0.95) !important; /* Premium cream background */
+    border-left: 1px solid rgba(233, 196, 106, 0.3) !important;
+}
+
+.side-drawer.active {
+    right: 0; /* Slide in */
+}
+
+/* Blurred drawer overlay dismiss background */
+.drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(7, 59, 82, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 2008;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Close button inside drawers */
+.drawer-close-btn {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(7, 59, 82, 0.15);
+    background: transparent;
+    color: var(--secondary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer-close-btn svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 2.2; /* Bold premium strokes */
+    fill: none;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer-close-btn:hover {
+    background-color: var(--secondary);
+    color: var(--white);
+    border-color: var(--secondary);
+}
+
+.drawer-close-btn:hover svg {
+    transform: rotate(90deg); /* High-end cross-spin micro-interaction */
+}
+
+.drawer-content {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.drawer-content h3 {
+    font-size: 2.2rem;
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+}
+
+.drawer-lead {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+}
+
+.drawer-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+.drawer-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.drawer-form .form-group label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--secondary);
+    text-transform: uppercase;
+}
+
+.drawer-form .form-group input,
+.drawer-form .form-group select {
+    padding: 0.95rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(7, 59, 82, 0.15);
+    color: var(--secondary);
+    outline: none;
+    transition: var(--transition-fast);
+}
+
+.drawer-form .form-group input:focus,
+.drawer-form .form-group select:focus {
+    border-color: var(--primary);
+    background-color: var(--white);
+    box-shadow: 0 4px 15px rgba(74, 184, 217, 0.1);
+}
+
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+.drawer-submit-btn {
+    width: 100%;
+    margin-top: 1rem;
+    border-radius: var(--radius-md);
+    padding: 1.1rem;
+    font-size: 0.85rem;
+}
+
+/* Responsive side drawers for mobile viewports */
+@media (max-width: 576px) {
+    .sticky-tabs-container {
+        top: auto;
+        bottom: 0px; /* Position tightly at screen bottom */
+        right: 0px;
+        transform: none;
+        flex-direction: row;
+        gap: 0px;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .sticky-tab {
+        writing-mode: horizontal-tb; /* Normal reading text on mobile landscape/bars */
+        transform: none;
+        height: 56px;
+        width: 33.333%; /* Split horizontally into three segments */
+        border-radius: 0; /* Boxy bottom bar */
+        padding: 0 0.4rem; /* Safe padding for narrower mobile screens */
+        justify-content: center;
+        border-left: none;
+        border-top: 1px solid rgba(7, 59, 82, 0.12);
+        box-shadow: none;
+        flex-direction: row-reverse; /* Circle icon on the right, text on left */
+        gap: 6px; /* Optimized gap for mobile */
+    }
+
+    .sticky-tab:hover {
+        transform: none;
+        background-color: rgba(250, 250, 248, 0.98);
+    }
+
+    .sticky-tab .tab-icon-circle {
+        position: static !important;
+        width: 26px !important; /* Slightly smaller to fit perfectly */
+        height: 26px !important;
+        transform: none !important;
+        box-shadow: none !important;
+        left: auto !important;
+        bottom: auto !important;
+    }
+
+    .sticky-tab .tab-icon-circle svg {
+        width: 13px;
+        height: 13px;
+    }
+
+    .sticky-tab .tab-text {
+        writing-mode: horizontal-tb;
+        transform: none;
+        margin-bottom: 0;
+        font-size: 0.92rem; /* Clean and premium, fits perfectly on small mobile screens */
+        letter-spacing: 0.08em;
+        font-weight: 700;
+    }
+    
+    .tab-events {
+        border-top: 3px solid var(--accent); /* Sunset gold */
+    }
+    
+    .tab-table {
+        border-top: 3px solid var(--secondary); /* Dark deep navy */
+    }
+    
+    .tab-room {
+        border-top: 3px solid var(--primary); /* Ocean blue */
+    }
+
+    .tab-events:hover,
+    .tab-table:hover,
+    .tab-room:hover {
+        width: 33.333% !important; /* Prevent widening layout shifts on mobile */
+    }
+
+    .side-drawer {
+        width: 100%;
+        right: -100%;
+        padding: 5rem 2rem 3rem;
+        border-radius: 0;
+    }
+}
+
+/* --- FLOATING WHATSAPP CHAT BUTTON (FAB) --- */
+.floating-wa-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    background-color: #25D366; /* Official WhatsApp vibrant green */
+    color: var(--white);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+    z-index: 1999; /* Floating cleanly above sections but below overlays/drawers */
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: wa-pulse 2.2s infinite;
+}
+
+.floating-wa-btn svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+}
+
+.floating-wa-btn:hover {
+    background-color: #20ba5a; /* Slightly darker green on hover */
+    color: var(--white);
+    transform: scale(1.08) rotate(8deg);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+}
+
+@keyframes wa-pulse {
+    0% {
+        box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4), 0 0 0 0 rgba(37, 211, 102, 0.4);
+    }
+    70% {
+        box-shadow: 0 4px 16px rgba(37, 211, 102, 0.2), 0 0 0 12px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 4px 16px rgba(37, 211, 102, 0.2), 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* Mobile viewport spacing adjustment for WhatsApp FAB to clear bottom bar */
+@media (max-width: 576px) {
+    .floating-wa-btn {
+        bottom: 76px; /* Floating cleanly above the horizontal horizontal booking bar (56px) */
+        right: 16px;
+        width: 50px;
+        height: 50px;
+    }
+    .floating-wa-btn svg {
+        width: 24px;
+        height: 24px;
     }
 }
