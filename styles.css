@@ -261,7 +261,7 @@ p.lead {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     box-shadow: var(--shadow-soft);
-    border-bottom: 1px solid rgba(7, 59, 82, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .header.scrolled .nav-link {
@@ -385,15 +385,15 @@ p.lead {
 }
 
 .header.scrolled .hamburger {
-    border-color: rgba(7, 59, 82, 0.2);
+    border-color: rgba(0, 0, 0, 0.15);
 }
 
 .header.scrolled .hamburger span {
-    background-color: var(--secondary);
+    background-color: #111111;
 }
 
 .header.scrolled .hamburger:hover {
-    border-color: var(--secondary);
+    border-color: #111111;
 }
 
 .hamburger.active span:nth-child(1) {
@@ -422,15 +422,17 @@ p.lead {
     z-index: 2000; /* Float above everything including header */
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     justify-content: flex-end; /* Align the drawer panel to the right */
     overflow: hidden;
+    visibility: hidden;
 }
 
 .fullscreen-nav.active {
     opacity: 1;
     pointer-events: auto;
+    visibility: visible;
 }
 
 .fullscreen-drawer {
@@ -1061,6 +1063,10 @@ p.lead {
     object-fit: cover;
     display: block;
     transition: var(--transition);
+}
+
+.celebrate-img {
+    object-position: center top !important; /* Shift viewport upward to showcase pool & sky, hide flooring */
 }
 
 .experience-image-container:hover .experience-img {
@@ -1755,6 +1761,84 @@ p.lead {
     background-color: var(--primary) !important;
     color: var(--white) !important;
     transform: translateY(-2px);
+}
+
+/* --- Resort Inventory & Types Showcase --- */
+.resort-inventory-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(233, 196, 106, 0.12);
+    border: 1px solid rgba(233, 196, 106, 0.45);
+    color: var(--secondary);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.55rem 1.3rem;
+    border-radius: var(--radius-full);
+    margin: 0.2rem 0 1.5rem 0;
+    box-shadow: var(--shadow-soft);
+    align-self: flex-start;
+}
+
+.resort-types-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.8rem;
+    margin: 1rem 0 2.5rem 0;
+    padding: 1.2rem;
+    background: rgba(7, 59, 82, 0.03);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(7, 59, 82, 0.05);
+    max-width: 500px;
+    width: 100%;
+}
+
+.resort-type-item {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--secondary);
+    letter-spacing: 0.02em;
+}
+
+.resort-type-sep {
+    color: var(--accent);
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+.resort-type-item.premium-suit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    color: var(--secondary);
+    background: linear-gradient(120deg, rgba(233, 196, 106, 0.15), rgba(233, 196, 106, 0.05));
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(233, 196, 106, 0.3);
+}
+
+.resort-type-item .availability-badge {
+    background: var(--accent);
+    color: var(--secondary);
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.45rem;
+    border-radius: var(--radius-sm);
+    margin-left: 0.2rem;
+    animation: pulseAvailability 2s infinite ease-in-out;
+}
+
+@keyframes pulseAvailability {
+    0%, 100% { opacity: 0.95; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.03); }
 }
 
 /* --- CORPORATE & ACTIVITIES SPLIT GRID --- */
@@ -2788,6 +2872,10 @@ p.lead {
         padding: 5rem 0;
     }
 
+    .hero-bg-image {
+        object-position: 80% center !important; /* Shift the entrance image slightly left from the far right on mobile */
+    }
+
     .nav-logo {
         height: 3.2rem; /* Compact logo size for mobile screens */
     }
@@ -3118,6 +3206,24 @@ p.lead {
         font-size: 0.78rem !important;
         padding: 0.85rem 1.8rem !important;
     }
+
+    .resort-inventory-badge {
+        align-self: center !important;
+        margin: 0 0 1.2rem 0 !important;
+        font-size: 0.75rem !important;
+        padding: 0.45rem 1.15rem !important;
+    }
+
+    .resort-types-list {
+        justify-content: center !important;
+        margin: 0.8rem 0 1.6rem 0 !important;
+        padding: 0.8rem !important;
+        gap: 0.5rem !important;
+    }
+
+    .resort-type-item {
+        font-size: 0.76rem !important;
+    }
 }
 
 @media (max-width: 575px) {
@@ -3421,16 +3527,18 @@ p.lead {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: -15px 0 40px rgba(7, 59, 82, 0.18);
     overflow-y: auto;
     border-radius: var(--radius-lg) 0 0 var(--radius-lg);
     background: rgba(250, 250, 248, 0.95) !important; /* Premium cream background */
     border-left: 1px solid rgba(233, 196, 106, 0.3) !important;
+    visibility: hidden;
 }
 
 .side-drawer.active {
     right: 0; /* Slide in */
+    visibility: visible;
 }
 
 /* Blurred drawer overlay dismiss background */
@@ -3708,5 +3816,923 @@ p.lead {
     .floating-wa-btn svg {
         width: 24px;
         height: 24px;
+    }
+}
+
+/* ==========================================================================
+   --- PREMIUM BOOK-STYLE MENU SECTION ---
+   ========================================================================== */
+.menu-book-section {
+    display: none;
+    padding: 8rem 0;
+    background-color: #FAF9F6; /* Luxury Warm Paper White */
+    border-top: 1px solid rgba(7, 59, 82, 0.05);
+    border-bottom: 1px solid rgba(7, 59, 82, 0.05);
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.menu-book-section.active {
+    display: block;
+    animation: menuSectionReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes menuSectionReveal {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-book-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.menu-book-header h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    color: var(--secondary);
+    margin-bottom: 1.5rem;
+}
+
+.menu-book-header p.lead {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+/* Tab Selector for Books */
+.menu-selector-tabs {
+    display: inline-flex;
+    background: rgba(0, 0, 0, 0.03);
+    padding: 6px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.menu-tab-btn {
+    padding: 1rem 2.5rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border-radius: var(--radius-full);
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.menu-tab-btn.active {
+    background-color: var(--secondary);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.menu-tab-btn:hover:not(.active) {
+    color: var(--secondary);
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* Viewport & Wrapper */
+.book-viewport {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+    margin: 0 auto;
+    max-width: 1100px;
+}
+
+.book-wrapper {
+    position: relative;
+    width: 980px;
+    height: 620px;
+    perspective: 1500px;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    background-color: #FAF8F5; /* Premium paper backdrop for the book */
+}
+
+/* Two-page spread centering shifts on desktop */
+.book-wrapper.book-state-cover {
+    transform: translateX(-25%); /* Center the cover on the right page slot */
+}
+.book-wrapper.book-state-open {
+    transform: translateX(0); /* Center the opened two-page spread perfectly */
+}
+.book-wrapper.book-state-back {
+    transform: translateX(25%); /* Center the back cover on the left page slot */
+}
+
+/* Spine shadow and binding crease are enabled for premium book layout on desktop */
+.book-spine-crease {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0,0,0,0.06), rgba(0,0,0,0.12) 50%, rgba(0,0,0,0.06));
+    z-index: 50;
+    transform: translateX(-50%);
+}
+
+.book-spine-shadow {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 30px;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0,0,0,0.12), rgba(0,0,0,0) 100%);
+    z-index: 49;
+    transform-origin: left center;
+}
+
+/* Individual Book Sheet (Dynamic stack) */
+.book-sheet {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform-origin: left center;
+    transition: transform 0.85s cubic-bezier(0.645, 0.045, 0.355, 1);
+    z-index: 1;
+}
+
+.book-sheet.flipped {
+    transform: rotateY(-180deg);
+}
+
+/* Floating High-Z index during dynamic Y-rotation transition */
+.book-sheet.active-flip {
+    z-index: 100 !important;
+}
+
+/* Page Sides */
+.page-side {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    overflow: hidden;
+    padding: 2.2rem 2.2rem; /* Reduced padding to fit text on a single page */
+    display: flex;
+    flex-direction: column;
+    background-color: #FAF8F5; /* Premium fine linen color */
+    /* Add elegant drop shadow and rounded corners directly to each page for single page booklet view */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03), inset 0 0 40px rgba(0, 0, 0, 0.01);
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transform-style: preserve-3d;
+}
+
+.page-front {
+    transform: translateZ(1px); /* Explicit 3D offset resolves Z-fighting */
+    border-radius: 6px; /* Uniform rounded corners */
+}
+
+.page-back {
+    transform: rotateY(180deg) translateZ(1px); /* Explicit 3D offset resolves Z-fighting */
+    border-radius: 6px; /* Uniform rounded corners */
+}
+
+/* Realistic inner page binding shadows for the 3D book feel */
+.page-front::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.06) 100%);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.page-back::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0) 100%);
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Leather Cover Themes */
+.book-cover {
+    background-size: cover;
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.2);
+}
+
+.food-cover-front {
+    background: #EAE6DF radial-gradient(circle at 30% 30%, #F5F2EC 0%, #EAE6DF 100%);
+    border-left: 10px solid var(--secondary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.food-cover-back {
+    background: #EAE6DF radial-gradient(circle at 70% 30%, #F5F2EC 0%, #EAE6DF 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.bar-cover-front {
+    background: #05212e radial-gradient(circle at 30% 30%, #0d3c52 0%, #05212e 100%);
+    border-left: 10px solid var(--accent);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.bar-cover-back {
+    background: #05212e radial-gradient(circle at 70% 30%, #0d3c52 0%, #05212e 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.cover-title-wrap {
+    border: 2px solid var(--accent);
+    padding: 3rem 2rem;
+    width: 85%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--radius-md);
+    text-align: center; /* Explicitly center aligns all text elements inside the box */
+}
+
+.cover-title-wrap h3 {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    text-align: center; /* Ensure centered alignment */
+}
+
+.bar-cover-front .cover-title-wrap,
+.bar-cover-back .cover-title-wrap {
+    border-color: var(--accent);
+}
+
+.bar-cover-front .cover-title-wrap h3,
+.bar-cover-back .cover-title-wrap h3 {
+    color: var(--white) !important; /* Guaranteed white color on dark background */
+}
+
+.cover-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    text-align: center; /* Ensure centered alignment when text wraps */
+}
+
+.cover-logo {
+    width: 60px;
+    height: auto;
+    margin-bottom: 1.5rem;
+    filter: none;
+}
+
+.bar-cover-front .cover-logo,
+.bar-cover-back .cover-logo {
+    filter: brightness(0) invert(1) !important; /* Guaranteed white logo on dark background */
+}
+
+.cover-footer {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: auto;
+    text-align: center; /* Ensure centered alignment */
+}
+
+.bar-cover-front .cover-footer,
+.bar-cover-back .cover-footer {
+    color: rgba(255, 255, 255, 0.6) !important; /* Enhanced premium visibility on dark background */
+}
+
+/* Page Typography & List styling */
+.page-title-container {
+    margin-bottom: 1.2rem; /* Compact margin */
+    position: relative;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(7, 59, 82, 0.08);
+}
+
+.page-title-container h4 {
+    font-family: var(--font-heading);
+    font-size: 1.7rem; /* Elegant smaller heading */
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.page-title-container p.subtitle {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-top: 0.3rem;
+    font-weight: 600;
+}
+
+/* List scrollable wrapper (Forced no-scrollbar wrap) */
+.menu-list-wrapper {
+    flex-grow: 1;
+    overflow: hidden; /* Prevent all scrollbars entirely */
+    padding-right: 0;
+}
+
+.menu-items-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.9rem; /* Snug spacing */
+}
+
+.menu-category-block {
+    margin-bottom: 0.8rem;
+}
+
+.menu-category-block h5 {
+    font-family: var(--font-heading);
+    font-size: 1.05rem; /* Highly refined compact title */
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px dashed rgba(74, 184, 217, 0.2);
+    padding-bottom: 0.2rem;
+}
+
+.menu-item-row {
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.menu-item-row:last-child {
+    margin-bottom: 0;
+}
+
+.menu-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.6rem;
+}
+
+.menu-item-name {
+    font-family: var(--font-body);
+    font-size: 0.82rem; /* Clean, compact list size */
+    font-weight: 600;
+    color: var(--secondary);
+    letter-spacing: 0.02em;
+}
+
+.menu-item-leader {
+    flex-grow: 1;
+    border-bottom: 1px dotted rgba(7, 59, 82, 0.15);
+    height: 1px;
+}
+
+.menu-item-tag {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 1px 4px;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-left: 4px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.menu-item-tag.veg {
+    background-color: rgba(74, 184, 217, 0.1);
+    color: #2a8b9f;
+    border: 1px solid rgba(74, 184, 217, 0.2);
+}
+
+.menu-item-tag.non-veg {
+    background-color: rgba(233, 196, 106, 0.1);
+    color: #b38612;
+    border: 1px solid rgba(233, 196, 106, 0.2);
+}
+
+.menu-item-description {
+    font-family: var(--font-body);
+    font-size: 0.72rem; /* Snug description */
+    color: var(--text-muted);
+    margin-top: 0.1rem;
+    line-height: 1.3;
+}
+
+/* Culinary Collage System on Right Pages */
+.page-collage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.collage-img-wrap {
+    position: absolute;
+    border: 6px solid var(--white);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.3s ease;
+    cursor: pointer;
+}
+
+.collage-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.collage-img-wrap:hover {
+    transform: scale(1.05) translateY(-5px) !important;
+    z-index: 50 !important;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.09);
+}
+
+.collage-img-wrap:hover img {
+    transform: scale(1.04);
+}
+
+/* Specific overlapping positions */
+.collage-img-1 {
+    width: 75%;
+    height: 60%;
+    top: 10%;
+    left: 8%;
+    transform: rotate(-1.5deg);
+    z-index: 10;
+}
+
+.collage-img-2 {
+    width: 50%;
+    height: 50%;
+    bottom: 8%;
+    right: 6%;
+    transform: rotate(2deg);
+    z-index: 20;
+    border-color: var(--white);
+}
+
+.collage-img-3 {
+    width: 38%;
+    height: 38%;
+    bottom: 25%;
+    left: 4%;
+    transform: rotate(-3deg);
+    z-index: 15;
+}
+
+.collage-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    right: 30px;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--secondary);
+    text-align: center;
+    pointer-events: none;
+    z-index: 30;
+    background: rgba(250, 248, 245, 0.9);
+    padding: 0.6rem 1rem;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Floating Navigation Controls */
+.book-nav-arrow {
+    position: absolute;
+    top: 50%;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--white);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    color: var(--secondary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+    transition: var(--transition-fast);
+    z-index: 150;
+    transform: translateY(-50%);
+}
+
+.book-nav-arrow svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2px;
+    transition: var(--transition-fast);
+}
+
+.book-nav-prev {
+    left: -28px;
+}
+
+.book-nav-next {
+    right: -28px;
+}
+
+.book-nav-arrow:hover {
+    background-color: var(--secondary);
+    color: var(--white);
+    border-color: var(--secondary);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+}
+
+.book-nav-prev:hover {
+    transform: translateY(-50%) translateX(-4px);
+}
+
+.book-nav-next:hover {
+    transform: translateY(-50%) translateX(4px);
+}
+
+.book-nav-arrow:disabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Page Indicator */
+.book-page-indicator {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+/* Disclaimer Line */
+.menu-disclaimer {
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    margin-top: 1.8rem;
+    opacity: 0.8;
+    text-transform: uppercase;
+    transition: var(--transition-fast);
+}
+
+.menu-disclaimer:hover {
+    opacity: 1;
+    letter-spacing: 0.15em;
+}
+
+/* --- RESPONSIVE BOOKLET STYLES (MOBILE OVERHAUL) --- */
+@media (max-width: 992px) {
+    .book-wrapper {
+        width: 100%;
+        max-width: 800px;
+        height: 560px;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-book-section {
+        padding: 5rem 0;
+        overflow: hidden;
+    }
+    
+    .book-viewport {
+        padding: 1.5rem 0 5.5rem 0; /* Expanded bottom padding to host the centered control widget */
+        width: 100%;
+        max-width: 100%;
+        overflow: visible;
+        isolation: isolate;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+    
+    .book-wrapper {
+        display: none !important;
+    }
+    
+    .book-wrapper.active-book {
+        width: 90% !important;
+        max-width: 440px !important;
+        height: 540px !important;
+        background-color: #FAF8F5 !important;
+        border-radius: 12px !important;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05) !important;
+        border: 1px solid rgba(0, 0, 0, 0.05) !important;
+        position: relative !important;
+        display: block !important;
+        overflow: hidden !important;
+        perspective: 1200px !important;
+        -webkit-perspective: 1200px !important;
+        margin: 0 auto !important;
+        transform: none !important;
+        contain: layout style;
+    }
+    
+    .book-wrapper.book-state-cover,
+    .book-wrapper.book-state-open,
+    .book-wrapper.book-state-back {
+        transform: none !important;
+    }
+    
+    .book-spine-crease,
+    .book-spine-shadow {
+        display: none !important;
+    }
+    
+    /* Original book sheets stay in DOM for desktop; mobile uses flip stage */
+    .book-sheet {
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+    
+    /* --- Mobile-only page turn stage (next page visible underneath) --- */
+    .mobile-menu-stage {
+        display: block;
+        position: absolute;
+        inset: 0;
+        z-index: 30;
+        perspective: 1200px;
+        -webkit-perspective: 1200px;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    
+    .mobile-menu-under {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background-color: #FAF8F5;
+        overflow: hidden;
+        color: var(--text-primary);
+    }
+    
+    .mobile-menu-stage .page-side {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        transform: none !important; /* Enforce flat rendering, no rotateY(180deg) Z-fighting */
+        backface-visibility: visible !important;
+        -webkit-backface-visibility: visible !important;
+        display: flex !important;
+        flex-direction: column !important;
+        background-color: #FAF8F5 !important;
+        border-radius: 12px !important;
+        padding: 2.2rem 1.6rem !important; /* Maintain luxury padding */
+        box-shadow: none !important;
+        border: none !important;
+    }
+    
+    .mobile-menu-leaf {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        transform-style: preserve-3d;
+        transform-origin: left center;
+        transform: rotateY(0deg);
+        transition: transform 0.55s cubic-bezier(0.33, 1, 0.68, 1);
+        visibility: hidden;
+        pointer-events: none;
+        will-change: auto;
+    }
+    
+    .mobile-menu-stage.is-animating .mobile-menu-leaf {
+        visibility: visible;
+        will-change: transform;
+    }
+    
+    .mobile-menu-leaf.is-turning {
+        transform: rotateY(-180deg);
+    }
+    
+    .mobile-menu-leaf.is-turning-from-back {
+        transform: rotateY(-180deg);
+        transition: none;
+    }
+    
+    /* Set backface transparent and remove nested styles to let cloned page-side handle styling! */
+    .mobile-menu-leaf-face {
+        position: absolute;
+        inset: 0;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        overflow: hidden;
+        background-color: transparent !important;
+        background-image: none !important;
+        display: block;
+        padding: 0 !important;
+        border-radius: 12px;
+        box-shadow: none !important;
+        border: none !important;
+    }
+    
+    .mobile-menu-leaf-front {
+        transform: rotateY(0deg) translateZ(1px);
+    }
+    
+    .mobile-menu-leaf-back {
+        transform: rotateY(180deg) translateZ(1px);
+    }
+    
+    .mobile-menu-stage .page-collage {
+        display: none !important;
+    }
+    
+    .mobile-menu-stage .menu-list-wrapper {
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        touch-action: pan-y;
+    }
+    
+    .mobile-menu-stage .menu-list-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+    
+    /* Elegant Centred Navigation Controls Bar at the bottom of viewport */
+    .book-nav-arrow {
+        position: absolute !important;
+        top: auto !important;
+        bottom: 12px !important; /* Floats near bottom */
+        transform: none !important;
+        width: 46px !important;
+        height: 46px !important;
+        z-index: 150;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+        pointer-events: auto !important;
+        margin: 0 !important;
+    }
+    
+    .book-nav-arrow:not(:disabled) {
+        cursor: pointer;
+    }
+    
+    .book-nav-prev {
+        left: calc(50% - 95px) !important; /* Anchored to left of centered page indicator */
+        right: auto !important;
+    }
+    
+    .book-nav-next {
+        right: calc(50% - 95px) !important; /* Anchored to right of centered page indicator */
+        left: auto !important;
+    }
+    
+    .book-nav-prev:hover {
+        transform: translateX(-2px) !important;
+    }
+    
+    .book-nav-next:hover {
+        transform: translateX(2px) !important;
+    }
+    
+    .book-nav-arrow:disabled {
+        opacity: 0.25;
+        pointer-events: none !important;
+    }
+    
+    /* Center the page indicator beautifully between the navigation arrows */
+    .book-page-indicator {
+        position: absolute !important;
+        bottom: 24px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        margin: 0 !important;
+        z-index: 140;
+        font-family: var(--font-body);
+        font-size: 0.8rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.12em !important;
+        color: var(--secondary) !important;
+        text-transform: uppercase;
+        pointer-events: none;
+    }
+    
+    .menu-disclaimer {
+        display: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .book-viewport {
+        padding: 1.5rem 0 5rem 0;
+    }
+    
+    .book-wrapper.active-book {
+        width: calc(100% - 32px) !important; /* Generous 16px side safety margin */
+        max-width: 360px !important;
+        height: 480px !important;
+    }
+    
+    .page-side {
+        padding: 1.8rem 1.1rem !important;
+    }
+    
+    .mobile-menu-stage .page-side {
+        padding: 1.8rem 1.1rem !important;
+    }
+    
+    .page-title-container {
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .page-title-container h4 {
+        font-size: 1.35rem !important;
+    }
+    
+    .menu-item-name {
+        font-size: 0.76rem !important;
+    }
+    
+    .menu-item-description {
+        font-size: 0.68rem !important;
+    }
+    
+    .page-collage {
+        display: none !important;
+    }
+    
+    .book-nav-arrow {
+        width: 40px !important;
+        height: 40px !important;
+        bottom: 12px !important;
+    }
+    
+    .book-nav-prev {
+        left: calc(50% - 85px) !important;
+    }
+    
+    .book-nav-next {
+        right: calc(50% - 85px) !important;
+    }
+    
+    .book-page-indicator {
+        bottom: 22px !important;
+        font-size: 0.72rem !important;
+        letter-spacing: 0.1em !important;
     }
 }

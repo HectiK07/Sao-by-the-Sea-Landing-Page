@@ -186,9 +186,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         `_Request sent from SAO website_`;
 
         const encodedMessage = encodeURIComponent(message);
-        const waUrl = `https://wa.me/919321636513?text=${encodedMessage}`;
+        const waUrl = `https://wa.me/917400197371?text=${encodedMessage}`;
         
-        console.log('Sending reservation data via WhatsApp to +91 93216 36513:', { name, phone: phoneValidation.digits, friendlyExp, date });
+        console.log('Sending reservation data via WhatsApp to +91 74001 97371:', { name, phone: phoneValidation.digits, friendlyExp, date });
         
         // Reset form
         bookingForm.reset();
@@ -302,9 +302,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Configurable WhatsApp Contact Numbers
     // Format: Country Code + Number (No spaces, plus signs, or leading zeroes)
-    const EVENTS_WHATSAPP_NUMBER = '919321636513'; // Temporarily routed to client test number
-    const TABLE_WHATSAPP_NUMBER = '919321636513'; // Temporarily routed to client test number
-    const ROOM_WHATSAPP_NUMBER = '919321636513';  // Temporarily routed to client test number
+    const EVENTS_WHATSAPP_NUMBER = '917400197371'; // Events and Plan Your Visit Form
+    const TABLE_WHATSAPP_NUMBER = '918976757666';  // Table Reservations
+    const ROOM_WHATSAPP_NUMBER = '917900112578';   // Room Booking / Stay Stays
 
     // Handle Events Inquiry WhatsApp redirect
     const whatsappEventsForm = document.getElementById('whatsappEventsForm');
@@ -452,5 +452,477 @@ document.addEventListener('DOMContentLoaded', () => {
             closeAllDrawers();
         }
     });
+
+    // ==========================================================================
+    // --- 8. PREMIUM INTERACTIVE 3D BOOK-STYLE MENU ---
+    // ==========================================================================
+    const viewMenuTrigger = document.getElementById('viewMenuTrigger');
+    const menuBookSection = document.getElementById('menu-book-section');
+    const foodTabBtn = document.getElementById('foodTabBtn');
+    const drinksTabBtn = document.getElementById('drinksTabBtn');
+    const foodBook = document.getElementById('food-book');
+    const drinksBook = document.getElementById('drinks-book');
+    const bookPrevBtn = document.getElementById('bookPrevBtn');
+    const bookNextBtn = document.getElementById('bookNextBtn');
+    const bookPageIndicator = document.getElementById('bookPageIndicator');
+    const bookViewport = document.querySelector('.book-viewport');
+
+    if (viewMenuTrigger && menuBookSection) {
+        
+        // Define Books Registry State
+        const books = {
+            food: {
+                wrapper: foodBook,
+                sheets: Array.from(foodBook.querySelectorAll('.book-sheet')),
+                currentIndex: 0,
+                name: "Culinary Journal"
+            },
+            drinks: {
+                wrapper: drinksBook,
+                sheets: Array.from(drinksBook.querySelectorAll('.book-sheet')),
+                currentIndex: 0,
+                name: "Bar Directory"
+            }
+        };
+        
+        let activeBookKey = 'food';
+        let isBookFlipping = false;
+        const MOBILE_BOOK_FLIP_MS = 520;
+
+        const isMobileBook = () => window.matchMedia('(max-width: 768px)').matches;
+
+        // Calculate z-indices for sheets
+        const updateZIndices = (key) => {
+            const book = books[key];
+            const total = book.sheets.length;
+            book.sheets.forEach((sheet, idx) => {
+                if (idx < book.currentIndex) {
+                    sheet.style.zIndex = idx + 1;
+                } else {
+                    sheet.style.zIndex = total - idx + 1;
+                }
+            });
+        };
+
+        // Reset Book to cover closed
+        const resetBook = (key) => {
+            const book = books[key];
+            book.currentIndex = 0;
+            book.sheets.forEach(sheet => {
+                sheet.classList.remove('flipped');
+                sheet.classList.remove('active-flip');
+            });
+            const stage = book.wrapper.querySelector('.mobile-menu-stage');
+            if (stage) {
+                stage.classList.remove('is-animating');
+                const leaf = stage.querySelector('.mobile-menu-leaf');
+                if (leaf) {
+                    leaf.classList.remove('is-turning', 'is-turning-from-back');
+                }
+            }
+            updateZIndices(key);
+        };
+
+        const getMobilePageSource = (book, pageIndex) => {
+            const lastSheet = book.sheets.length - 1;
+            if (pageIndex === 0) {
+                return book.sheets[0].querySelector('.page-front');
+            }
+            if (pageIndex === book.sheets.length) {
+                return book.sheets[lastSheet].querySelector('.page-back');
+            }
+            return book.sheets[pageIndex - 1].querySelector('.page-back');
+        };
+
+        const ensureMobileStage = (wrapper) => {
+            let stage = wrapper.querySelector('.mobile-menu-stage');
+            if (stage) {
+                return stage;
+            }
+            stage = document.createElement('div');
+            stage.className = 'mobile-menu-stage';
+            stage.setAttribute('aria-live', 'polite');
+            stage.innerHTML = `
+                <div class="mobile-menu-under"></div>
+                <div class="mobile-menu-leaf">
+                    <div class="mobile-menu-leaf-face mobile-menu-leaf-front"></div>
+                    <div class="mobile-menu-leaf-face mobile-menu-leaf-back" aria-hidden="true"></div>
+                </div>
+            `;
+            wrapper.appendChild(stage);
+            return stage;
+        };
+
+        const mountMobilePage = (slot, sourceEl) => {
+            slot.innerHTML = '';
+            if (!sourceEl) {
+                return;
+            }
+            const clone = sourceEl.cloneNode(true);
+            clone.removeAttribute('id');
+            clone.querySelectorAll('[id]').forEach((el) => el.removeAttribute('id'));
+            slot.appendChild(clone);
+        };
+
+        const syncMobileStageIdle = (book, pageIndex) => {
+            if (!isMobileBook()) {
+                return;
+            }
+            const stage = ensureMobileStage(book.wrapper);
+            const under = stage.querySelector('.mobile-menu-under');
+            const leaf = stage.querySelector('.mobile-menu-leaf');
+            const leafFront = stage.querySelector('.mobile-menu-leaf-front');
+            const leafBack = stage.querySelector('.mobile-menu-leaf-back');
+            mountMobilePage(under, getMobilePageSource(book, pageIndex));
+            leafFront.innerHTML = '';
+            if (leafBack) leafBack.innerHTML = '';
+            leaf.classList.remove('is-turning', 'is-turning-from-back');
+            stage.classList.remove('is-animating');
+        };
+
+        const setBookNavLocked = (locked) => {
+            isBookFlipping = locked;
+            bookPrevBtn.disabled = locked || books[activeBookKey].currentIndex === 0;
+            bookNextBtn.disabled = locked || books[activeBookKey].currentIndex >= books[activeBookKey].sheets.length;
+        };
+
+        const performMobileStageTurn = (book, direction, onComplete) => {
+            if (isBookFlipping) {
+                return;
+            }
+            const fromIndex = book.currentIndex;
+            const toIndex = fromIndex + direction;
+            if (toIndex < 0 || toIndex > book.sheets.length) {
+                return;
+            }
+
+            const stage = ensureMobileStage(book.wrapper);
+            const under = stage.querySelector('.mobile-menu-under');
+            const leaf = stage.querySelector('.mobile-menu-leaf');
+            const leafFront = stage.querySelector('.mobile-menu-leaf-front');
+            const leafBack = stage.querySelector('.mobile-menu-leaf-back');
+            const fromSource = getMobilePageSource(book, fromIndex);
+            const toSource = getMobilePageSource(book, toIndex);
+
+            setBookNavLocked(true);
+            
+            if (direction > 0) {
+                // Forward turn: target page (toSource) underneath, current page (fromSource) on front of turning leaf
+                mountMobilePage(under, toSource);
+                mountMobilePage(leafFront, fromSource);
+                if (leafBack) leafBack.innerHTML = '';
+            } else {
+                // Backward turn: current page (fromSource) underneath, target page (toSource) on back of turning leaf
+                mountMobilePage(under, fromSource);
+                if (leafBack) mountMobilePage(leafBack, toSource);
+                leafFront.innerHTML = '';
+            }
+            
+            leaf.classList.remove('is-turning', 'is-turning-from-back');
+            stage.classList.add('is-animating');
+
+            let completed = false;
+            const complete = () => {
+                if (completed) {
+                    return;
+                }
+                completed = true;
+                leaf.removeEventListener('transitionend', onTransitionEnd);
+                clearTimeout(fallbackTimer);
+                leaf.classList.remove('is-turning', 'is-turning-from-back');
+                stage.classList.remove('is-animating');
+                isBookFlipping = false;
+                if (typeof onComplete === 'function') {
+                    onComplete();
+                } else {
+                    updateBookControls();
+                }
+            };
+
+            const onTransitionEnd = (e) => {
+                if (e.target !== leaf || e.propertyName !== 'transform') {
+                    return;
+                }
+                complete();
+            };
+
+            if (direction > 0) {
+                void leaf.offsetWidth;
+                requestAnimationFrame(() => {
+                    leaf.classList.add('is-turning');
+                });
+            } else {
+                leaf.classList.add('is-turning-from-back');
+                void leaf.offsetWidth;
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        leaf.classList.remove('is-turning-from-back');
+                    });
+                });
+            }
+
+            leaf.addEventListener('transitionend', onTransitionEnd);
+            const fallbackTimer = setTimeout(complete, MOBILE_BOOK_FLIP_MS + 120);
+        };
+
+        const updateBookControls = () => {
+            const book = books[activeBookKey];
+            
+            // Prev button disabled on closed cover
+            bookPrevBtn.disabled = (book.currentIndex === 0);
+            
+            // Next button disabled on back cover
+            bookNextBtn.disabled = (book.currentIndex === book.sheets.length);
+            
+            // Update Page Indicator
+            bookPageIndicator.textContent = `Page ${book.currentIndex + 1} of ${book.sheets.length + 1}`;
+
+            // Add classes for styling single-page shifting on desktop
+            const bookEl = document.getElementById(`${activeBookKey}-book`);
+            if (bookEl) {
+                bookEl.classList.remove('book-state-cover', 'book-state-open', 'book-state-back');
+                if (!isMobileBook()) {
+                    if (book.currentIndex === 0) {
+                        bookEl.classList.add('book-state-cover');
+                    } else if (book.currentIndex === book.sheets.length) {
+                        bookEl.classList.add('book-state-back');
+                    } else {
+                        bookEl.classList.add('book-state-open');
+                    }
+                }
+            }
+
+            if (isMobileBook()) {
+                book.sheets.forEach((sheet) => sheet.classList.remove('flipped'));
+                for (let i = 0; i < book.currentIndex; i++) {
+                    book.sheets[i].classList.add('flipped');
+                }
+                syncMobileStageIdle(book, book.currentIndex);
+            }
+        };
+
+        // Initialize z-indices and active classes for both books
+        updateZIndices('food');
+        updateZIndices('drinks');
+        foodBook.classList.add('active-book');
+        drinksBook.classList.remove('active-book');
+        ensureMobileStage(foodBook);
+        ensureMobileStage(drinksBook);
+        updateBookControls();
+
+        const performFlip = (sheet, action, onComplete) => {
+            if (isBookFlipping) {
+                return;
+            }
+            isBookFlipping = true;
+            bookPrevBtn.disabled = true;
+            bookNextBtn.disabled = true;
+
+            let completed = false;
+            const complete = () => {
+                if (completed) {
+                    return;
+                }
+                completed = true;
+                sheet.removeEventListener('transitionend', onTransitionEnd);
+                clearTimeout(fallbackTimer);
+                sheet.classList.remove('active-flip');
+                isBookFlipping = false;
+                if (typeof onComplete === 'function') {
+                    onComplete();
+                } else {
+                    updateBookControls();
+                }
+            };
+
+            sheet.classList.add('active-flip');
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    if (action === 'flip') {
+                        sheet.classList.add('flipped');
+                    } else {
+                        sheet.classList.remove('flipped');
+                    }
+                });
+            });
+
+            const onTransitionEnd = (e) => {
+                if (e.target !== sheet || e.propertyName !== 'transform') {
+                    return;
+                }
+                complete();
+            };
+
+            sheet.addEventListener('transitionend', onTransitionEnd);
+            const fallbackTimer = setTimeout(complete, 850);
+        };
+
+        // VIEW MENU TRIGGER TRIGGER
+        viewMenuTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            const isActive = menuBookSection.classList.toggle('active');
+            
+            if (isActive) {
+                viewMenuTrigger.textContent = 'CLOSE MENU';
+                setTimeout(() => {
+                    menuBookSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 300);
+                
+                // Exquisite wow effect: auto-open the book cover after scroll finishes
+                setTimeout(() => {
+                    const book = books[activeBookKey];
+                    if (book.currentIndex === 0 && !isBookFlipping) {
+                        const openCover = () => {
+                            book.currentIndex = 1;
+                            updateZIndices(activeBookKey);
+                            updateBookControls();
+                        };
+                        if (isMobileBook()) {
+                            performMobileStageTurn(book, 1, openCover);
+                        } else {
+                            performFlip(book.sheets[0], 'flip', openCover);
+                        }
+                    }
+                }, 1200);
+            } else {
+                viewMenuTrigger.textContent = 'VIEW MENU';
+                document.getElementById('cuisine').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Reset states
+                resetBook('food');
+                resetBook('drinks');
+                updateBookControls();
+            }
+        });
+
+        // BOOK TAB SELECTION TRIGGER
+        const switchBook = (key) => {
+            if (activeBookKey === key) return;
+            
+            // Reset active book cover closed
+            resetBook(activeBookKey);
+            
+            // Toggle active tabs styling
+            if (key === 'food') {
+                foodTabBtn.classList.add('active');
+                drinksTabBtn.classList.remove('active');
+                foodBook.style.display = 'block';
+                drinksBook.style.display = 'none';
+                foodBook.classList.add('active-book');
+                drinksBook.classList.remove('active-book');
+            } else {
+                drinksTabBtn.classList.add('active');
+                foodTabBtn.classList.remove('active');
+                drinksBook.style.display = 'block';
+                foodBook.style.display = 'none';
+                drinksBook.classList.add('active-book');
+                foodBook.classList.remove('active-book');
+            }
+            
+            // Set new active key and update
+            activeBookKey = key;
+            updateZIndices(activeBookKey);
+            updateBookControls();
+            
+            // Smoothly auto-open the new book cover as well!
+            setTimeout(() => {
+                const book = books[activeBookKey];
+                if (book.currentIndex === 0 && !isBookFlipping) {
+                    const openCover = () => {
+                        book.currentIndex = 1;
+                        updateZIndices(activeBookKey);
+                        updateBookControls();
+                    };
+                    if (isMobileBook()) {
+                        performMobileStageTurn(book, 1, openCover);
+                    } else {
+                        performFlip(book.sheets[0], 'flip', openCover);
+                    }
+                }
+            }, 500);
+        };
+
+        if (foodTabBtn) foodTabBtn.addEventListener('click', () => switchBook('food'));
+        if (drinksTabBtn) drinksTabBtn.addEventListener('click', () => switchBook('drinks'));
+
+        // NAVIGATION ARROWS CLICK HANDLERS
+        bookNextBtn.addEventListener('click', () => {
+            const book = books[activeBookKey];
+            if (isBookFlipping || book.currentIndex >= book.sheets.length) {
+                return;
+            }
+
+            const afterNext = () => {
+                book.currentIndex++;
+                updateZIndices(activeBookKey);
+                updateBookControls();
+            };
+
+            if (isMobileBook()) {
+                performMobileStageTurn(book, 1, afterNext);
+            } else {
+                performFlip(book.sheets[book.currentIndex], 'flip', afterNext);
+            }
+        });
+
+        bookPrevBtn.addEventListener('click', () => {
+            const book = books[activeBookKey];
+            if (isBookFlipping || book.currentIndex === 0) {
+                return;
+            }
+
+            const afterPrev = () => {
+                book.currentIndex--;
+                updateZIndices(activeBookKey);
+                updateBookControls();
+            };
+
+            if (isMobileBook()) {
+                performMobileStageTurn(book, -1, afterPrev);
+            } else {
+                performFlip(book.sheets[book.currentIndex - 1], 'unflip', afterPrev);
+            }
+        });
+
+        // SWIPE RECOGNITION (MOBILE) — ignore vertical scroll inside menu list
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchStartedOnMenuList = false;
+
+        if (bookViewport) {
+            bookViewport.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+                touchStartedOnMenuList = Boolean(e.target.closest('.menu-list-wrapper'));
+            }, { passive: true });
+
+            bookViewport.addEventListener('touchend', (e) => {
+                if (isBookFlipping) {
+                    return;
+                }
+                const touchEndX = e.changedTouches[0].clientX;
+                const touchEndY = e.changedTouches[0].clientY;
+                const deltaX = touchStartX - touchEndX;
+                const deltaY = touchStartY - touchEndY;
+
+                if (touchStartedOnMenuList && Math.abs(deltaY) > Math.abs(deltaX)) {
+                    return;
+                }
+
+                const threshold = 50;
+                if (deltaX > threshold) {
+                    bookNextBtn.click();
+                } else if (deltaX < -threshold) {
+                    bookPrevBtn.click();
+                }
+            }, { passive: true });
+        }
+
+        [bookPrevBtn, bookNextBtn].forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        });
+
+    }
 
 });
